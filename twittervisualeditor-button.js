@@ -1,8 +1,8 @@
 (function() {
     tinymce.PluginManager.add( 'twittervisualeditor_button', function( editor, url ) {
         editor.addButton( 'twittervisualeditor_button', {
-            text: 'Share on Twitter',
-            icon: false,
+			title: 'Share on Twitter',
+            icon: 'icon dashicons-twitter',
             onclick: function() {
                 editor.insertContent( '[sct_sharetwitter]' );
             }

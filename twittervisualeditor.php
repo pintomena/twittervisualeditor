@@ -89,3 +89,12 @@ function twittervisualeditor_register_button($buttons) {
    array_push( $buttons, 'twittervisualeditor_button');
    return $buttons;
 }
+
+
+/*
+ * Add stylel for custom TinyMCE button
+ */
+function twittervisualeditor_admin_css() {
+    wp_enqueue_style( 'twittervisualeditor-admin', plugins_url( '/twittervisualeditor-admin.css' , __FILE__ ) );
+}
+add_action('admin_enqueue_scripts', 'twittervisualeditor_admin_css');
