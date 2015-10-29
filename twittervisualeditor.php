@@ -49,4 +49,43 @@ function twittervisualeditor_css() {
 add_action( 'wp_enqueue_scripts', 'twittervisualeditor_css' );
 
 
+/*
+ * Create a shortcode button for tinymce
+ */
+function twittervisualeditor_shortcode_button() {
+	global $typenow;
 
+	// check user permissions
+	if ( current_user_can( 'edit_posts' ) && current_user_can( 'edit_pages' ) ) {
+
+		// verify the post type
+		if( in_array( $typenow, array( 'post', 'page' ) ) ) {
+
+			// check if WYSIWYG is enabled
+			if ( get_user_option( 'rich_editing' ) == 'true') {
+				add_filter( 'mce_external_plugins', 'twittervisualeditor_add_tinymce_plugin' );
+				add_filter( 'mce_buttons', 'twittervisualeditor_register_button' );
+			}
+		}
+	}
+}
+add_action( 'admin_head', 'twittervisualeditor_shortcode_button' );
+
+
+/*
+ * Specify the path to the script with our plugin for TinyMCE
+ */
+function twittervisualeditor_add_tinymce_plugin($plugin_array) {
+	
+	$plugin_array['twittervisualeditor_button'] = plugins_url( '/twittervisualeditor-button.js', __FILE__ );
+	return $plugin_array;
+}
+
+
+/*
+ * Add button in TinyMCE
+ */
+function twittervisualeditor_register_button($buttons) {
+   array_push( $buttons, 'twittervisualeditor_button');
+   return $buttons;
+}
