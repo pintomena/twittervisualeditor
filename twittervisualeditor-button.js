@@ -11,9 +11,18 @@
 			            name: 'text',
 			            label: 'Texto',
 						value: 'Compartir en Twitter',
-			        }],
+			        },{
+				    type: 'listbox',
+				    name: 'size',
+				    label: 'Tamaño Icono',
+					value: 'small',
+				    'values': [
+				        {text: 'Pequeño', value: 'small'},
+				        {text: 'Grande', value: 'big'}
+				    ]
+				}],
 			        onsubmit: function( e ) {
-			            editor.insertContent( '[sct_sharetwitter text=&quot;' + e.data.text + '&quot;]' );
+			            editor.insertContent( '[sct_sharetwitter text=&quot;' + e.data.text + '&quot; size=&quot;' + e.data.size + '&quot;]' );
 			        }
 			    });
 			}
