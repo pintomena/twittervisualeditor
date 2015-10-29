@@ -3,9 +3,20 @@
         editor.addButton( 'twittervisualeditor_button', {
 			title: 'Share on Twitter',
             icon: 'icon dashicons-twitter',
-            onclick: function() {
-                editor.insertContent( '[sct_sharetwitter]' );
-            }
+			onclick: function() {
+			    editor.windowManager.open( {
+			        title: 'Share on Twitter',
+			        body: [{
+			            type: 'textbox',
+			            name: 'text',
+			            label: 'Texto',
+						value: 'Compartir en Twitter',
+			        }],
+			        onsubmit: function( e ) {
+			            editor.insertContent( '[sct_sharetwitter text=&quot;' + e.data.text + '&quot;]' );
+			        }
+			    });
+			}
         });
     });
 })();
