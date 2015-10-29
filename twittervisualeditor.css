@@ -1,0 +1,16 @@
+.sct-twitter,
+.sct-twitter:hover {
+	text-decoration: none;
+	color: #4099FF;
+}
+
+.sct-twitter:before {
+    font-family: "dashicons";
+	content: "\f301";
+	font-size: 24px;
+	padding-right: 6px;
+}
+
+.sct-twitter-big:before {
+	font-size: 32px;	
+}
